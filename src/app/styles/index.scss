@@ -1,0 +1,11 @@
+@use './variables/global';
+
+body {
+    margin: 0;
+    font: var(--font-m);
+}
+
+.page-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+}

@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "esnext",
+
+        "target": "es5",
+        "lib": ["DOM", "DOM.Iterable", "ES2020"],
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "moduleResolution": "bundler",
+        "baseUrl": ".",
+        "strict": true,
+        "paths": {
+            "*": ["./src/*"]
+        },
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "types": ["jest", "@testing-library/jest-dom"]
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "include": ["src", "./config/jest/setupTests.ts"]
+}

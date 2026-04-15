@@ -1,0 +1,26 @@
+@use '../fonts/Nunito/Nunito';
+
+:root {
+    // colors
+    --bg-color: #b7179f;
+    --primary-color: #fff;
+    --secondary-color: #ff92fb;
+
+    // sizes
+    --navbar-height: 50px;
+
+    // fonts
+    --font-family-main: nunito; // --font-family-main: Consolas, 'Times New Roman', serif;
+    --font-size-m: 20px;
+    --font-line-m: 24px;
+    --font-m-f: var(--font-size-m) var(--font-line-m) var(--font-family-main);
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+    --font-size-l: 24px;
+    --font-line-l: 32px;
+    --font-l-f: var(--font-size-l) var(--font-line-l) var(--font-family-main);
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+    --font-size-xl: 32px;
+    --font-line-xl: 40px;
+    --font-xl-f: var(--font-size-xl) var(--font-line-xl) var(--font-family-main);
+    --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+}

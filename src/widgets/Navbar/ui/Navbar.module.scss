@@ -1,0 +1,10 @@
+.navbar {
+    height: var(--navbar-height);
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.links {
+    margin-left: auto;
+}

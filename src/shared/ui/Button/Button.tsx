@@ -20,6 +20,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
     disabled?: boolean;
     children?: ReactNode;
+    bold?: boolean;
+    scale?: boolean;
 }
 
 const ButtonComponent = ({
@@ -29,6 +31,8 @@ const ButtonComponent = ({
     square,
     disabled,
     size = ButtonSize.M,
+    bold,
+    scale,
     ...otherProps
 }: ButtonProps) => {
     const mods: Record<string, boolean | undefined> = {
@@ -36,6 +40,8 @@ const ButtonComponent = ({
         [styles.square]: square,
         [styles[size]]: true,
         [styles.disabled]: disabled,
+        [styles.bold]: bold,
+        [styles.scale]: scale,
     };
 
     return (

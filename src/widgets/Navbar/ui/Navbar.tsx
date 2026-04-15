@@ -10,14 +10,14 @@ interface NavbarProps {
 export const NavbarComponent = ({ className }: NavbarProps) => {
     return (
         <div className={classNames(styles.navbar, {}, [className])}>
-            <Button theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
+            <Button bold scale theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
                 О нас
             </Button>
 
-            <Button theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
+            <Button bold scale theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
                 Мед. услуги
             </Button>
-            <Button theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
+            <Button bold scale theme={ButtonTheme.CLEAR} size={ButtonSize.M}>
                 Войти
             </Button>
         </div>

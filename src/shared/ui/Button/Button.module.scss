@@ -39,3 +39,13 @@
 .disabled {
     opacity: 0.5;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+.scale {
+    &:hover {
+        transform: scale(1.05);
+    }
+}

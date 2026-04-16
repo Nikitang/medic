@@ -22,6 +22,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
     bold?: boolean;
     scale?: boolean;
+    underline?: boolean;
 }
 
 const ButtonComponent = ({
@@ -33,6 +34,7 @@ const ButtonComponent = ({
     size = ButtonSize.M,
     bold,
     scale,
+    underline,
     ...otherProps
 }: ButtonProps) => {
     const mods: Record<string, boolean | undefined> = {
@@ -42,6 +44,7 @@ const ButtonComponent = ({
         [styles.disabled]: disabled,
         [styles.bold]: bold,
         [styles.scale]: scale,
+        [styles.underline]: underline,
     };
 
     return (

@@ -2,6 +2,13 @@ import styles from './Card.module.scss';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { ReactNode } from 'react';
 
+export enum CardBgOptions {
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    BG = 'bg',
+    CUSTOM1 = '',
+}
+
 export enum CardHeightOptions {
     H1 = 'h1',
     H2 = 'h2',
@@ -21,6 +28,7 @@ interface CardProps {
     children?: ReactNode;
     width?: CardWidthOptions;
     height?: CardHeightOptions;
+    background?: CardBgOptions;
 }
 
 export const Card = ({
@@ -28,10 +36,12 @@ export const Card = ({
     children,
     width = CardWidthOptions.D,
     height = CardHeightOptions.D,
+    background = CardBgOptions.BG,
 }: CardProps) => {
     const mods: Mods = {
         [styles[width]]: width,
         [styles[height]]: height,
+        [styles[background]]: background,
     };
 
     return (

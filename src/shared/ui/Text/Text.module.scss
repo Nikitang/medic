@@ -1,11 +1,9 @@
 .title {
     font: var(--font-l);
-    color: var(--primary-color);
 }
 
 .text {
     font: var(--font-m);
-    color: var(--secondary-color);
 }
 
 .left {
@@ -18,4 +16,16 @@
 
 .right {
     text-align: right;
+}
+
+.bg {
+    color: var(--bg-color);
+}
+
+.primary {
+    color: var(--primary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
 }

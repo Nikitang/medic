@@ -1,4 +1,9 @@
-import { Card, CardHeightOptions, CardWidthOptions } from 'entities/Card';
+import {
+    Card,
+    CardBgOptions,
+    CardHeightOptions,
+    CardWidthOptions,
+} from 'entities/Card';
 import styles from './VisitTable.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Caduceus from 'shared/assets/icons/caduceus.png';
@@ -13,7 +18,7 @@ interface VIsitTableProps {
 export const VisitTable = ({ className }: VIsitTableProps) => {
     return (
         <div className={classNames(styles.visitTable, {}, [className])}>
-            <Card>
+            <Card className={styles.card} background={CardBgOptions.BG}>
                 <div className={styles.icon}>
                     <Pharmacy />
                 </div>

@@ -2,9 +2,31 @@
     height: var(--navbar-height);
     background-color: var(--bg-color);
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navLinks {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
 }
 
 .links {
     margin-left: auto;
+}
+
+.icon {
+    display: flex;
+    width: 170px;
+    height: 40px;
+    color: var(--primary-color);
+    align-items: center;
+    white-space: nowrap;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }

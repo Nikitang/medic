@@ -18,7 +18,8 @@
 .card {
     padding: 55px 10px;
     transition: all 0.2s;
-    box-shadow: 10px -5px 5px #d454c3;
+    box-shadow: 10px -5px 5px #9033e1;
+    cursor: pointer;
 
     &:hover {
         transform: scale(1.03);

@@ -6,3 +6,6 @@ prod:
 
 dev:
 	npm run build:dev
+
+server:
+	npm run start:dev:server

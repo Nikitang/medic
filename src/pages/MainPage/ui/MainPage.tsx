@@ -1,4 +1,4 @@
-import { VisitTable } from 'widgets/VisitTable';
+import { VisitTable } from 'features/VisitTable';
 
 const MainPage = () => {
     console.log(2222);

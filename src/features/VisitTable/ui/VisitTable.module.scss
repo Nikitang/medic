@@ -1,6 +1,11 @@
 .visitTable {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    min-width: 540px;
 }
 
 .icon {

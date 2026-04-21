@@ -1,5 +1,5 @@
 const NotFoundPage = () => {
-    return <div>Ничего не найден</div>;
+    return <div>Ничего не найдено</div>;
 };
 
 export default NotFoundPage;

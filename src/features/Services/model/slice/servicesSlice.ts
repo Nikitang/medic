@@ -11,12 +11,18 @@ export const servicesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(
-            fetchServicesData.fulfilled,
-            (state, action: PayloadAction<Array<Service>>) => {
-                state.data = action.payload;
-            },
-        );
+        builder
+            .addCase(
+                fetchServicesData.fulfilled,
+                (state, action: PayloadAction<Array<Service>>) => {
+                    console.log('action', action.payload);
+
+                    state.data = action.payload;
+                },
+            )
+            .addCase(fetchServicesData.rejected, (state, action) => {
+                console.error('rejected:', action.payload, action.error);
+            });
     },
 });
 

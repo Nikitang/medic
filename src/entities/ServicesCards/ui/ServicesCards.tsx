@@ -9,6 +9,7 @@ import Scalpel from 'shared/assets/icons/scalpel.svg';
 import Beaker from 'shared/assets/icons/beaker.svg';
 import Paper from 'shared/assets/icons/paper.svg';
 import Checkup from 'shared/assets/icons/checkup.svg';
+import { iconMap } from 'shared/utils/IconMap';
 
 interface ServicesCardsProps {
     className?: string;
@@ -18,9 +19,7 @@ export const ServicesCards = ({ className }: ServicesCardsProps) => {
     return (
         <div className={classNames(styles.servicesCards, {}, [className])}>
             <Card background={CardBgOptions.PRIMARY} className={styles.card}>
-                <div className={styles.icon}>
-                    <Scalpel />
-                </div>
+                <div className={styles.icon}>{iconMap.scalpel}</div>
                 <Text color={TextColors.BG} text="Операции" />
             </Card>
             <Card background={CardBgOptions.PRIMARY} className={styles.card}>

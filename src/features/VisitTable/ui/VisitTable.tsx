@@ -1,12 +1,6 @@
-import {
-    Card,
-    CardBgOptions,
-    CardHeightOptions,
-    CardWidthOptions,
-} from 'entities/Card';
+import { Card, CardBgOptions } from 'entities/Card';
 import styles from './VisitTable.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import Caduceus from 'shared/assets/icons/caduceus.png';
 import Pharmacy from 'shared/assets/icons/pharmacy.svg';
 import { Text, TextAlign, TextColors } from 'shared/ui/Text/Text';
 import { ServicesCards } from 'entities/ServicesCards';

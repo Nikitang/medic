@@ -10,12 +10,14 @@ export const fetchServicesData = createAsyncThunk<
     const { api } = extra;
 
     try {
-        const responce = await api.get<ServiceSchema>('/services');
+        const response = await api.get<Array<Service>>('/services');
 
-        if (!responce?.data.data) throw new Error('Error');
+        if (!Array.isArray(response.data)) {
+            return rejectWithValue('Invalid data format');
+        }
 
-        return responce.data.data;
+        return response.data;
     } catch (error) {
-        return rejectWithValue('error');
+        return rejectWithValue('Error');
     }
 });

@@ -1,0 +1,35 @@
+.dropDownAnswer {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.line {
+    height: 1px;
+    background-color: var(--bg-color);
+}
+
+.body {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-left: auto;
+    width: 25px;
+    height: 25px;
+
+    svg {
+        height: 100%;
+        width: 100%;
+        filter: invert(42%) sepia(100%) saturate(247%) hue-rotate(190deg)
+            brightness(80%);
+    }
+
+    transition: transform 0.5s ease;
+    transform: rotate(0deg) scale(0.9);
+}
+
+.rotate {
+    transition: transform 0.5s;
+    transform: rotate(225deg) scale(1.1);
+}

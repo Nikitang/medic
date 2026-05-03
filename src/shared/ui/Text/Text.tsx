@@ -21,6 +21,7 @@ interface TextProps {
     text?: string;
     align?: TextAlign;
     color?: TextColors;
+    bold?: boolean;
 }
 
 const TextComponent = ({
@@ -29,10 +30,12 @@ const TextComponent = ({
     text,
     align = TextAlign.LEFT,
     color = TextColors.PRIMARY,
+    bold,
 }: TextProps) => {
     const mods: Mods = {
         [styles[align]]: true,
         [styles[color]]: color,
+        [styles.bold]: bold,
     };
 
     return (

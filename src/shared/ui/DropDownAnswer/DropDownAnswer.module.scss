@@ -4,13 +4,13 @@
 }
 
 .line {
-    height: 1px;
-    background-color: var(--bg-color);
+    border-top: 1px solid var(--bg-color);
 }
 
 .body {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .icon {
@@ -32,4 +32,24 @@
 .rotate {
     transition: transform 0.5s;
     transform: rotate(225deg) scale(1.1);
+}
+
+.answer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+        max-height 1s ease,
+        opacity 0.3s ease;
+
+    &.active {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    &.inActive {
+        transition:
+            max-height 0.1s ease,
+            opacity 0.3s ease;
+    }
 }

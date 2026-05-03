@@ -1,4 +1,4 @@
-import { Card, CardBgOptions } from 'entities/Card';
+import { Card, CardBgOptions } from 'shared/ui/Card';
 import styles from './ServicesCards.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextColors } from 'shared/ui/Text/Text';

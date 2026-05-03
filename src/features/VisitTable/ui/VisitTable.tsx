@@ -1,9 +1,10 @@
-import { Card, CardBgOptions } from 'entities/Card';
+import { Card, CardBgOptions } from 'shared/ui/Card';
 import styles from './VisitTable.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Pharmacy from 'shared/assets/icons/pharmacy.svg';
 import { Text, TextAlign, TextColors } from 'shared/ui/Text/Text';
 import { ServicesCards } from 'entities/ServicesCards';
+import { ImgSlider } from 'shared/ui/ImgSlider/ImgSlider';
 
 interface VIsitTableProps {
     className?: string;
@@ -31,13 +32,10 @@ export const VisitTable = ({ className }: VIsitTableProps) => {
                     <ServicesCards />
                 </div>
             </Card>
-            <Card>
-                <Text
-                    title={'Med Clinic - лучшие специалисты'}
-                    text="Клиника занимается предоставлением 
-                    услуг разного спектра от анализов, до проведения операций"
-                />
-            </Card>
+            <div className={styles.card2}>
+                <ImgSlider />
+                <Card />
+            </div>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import styles from './DropDownAnswer.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Plus from 'shared/assets/icons/plus.svg';
@@ -10,7 +10,7 @@ interface DropDownAnswerProps {
     answer?: string;
 }
 
-export const DropDownAnswer = ({
+const DropDownAnswerComponent = ({
     className,
     question,
     answer,
@@ -40,11 +40,16 @@ export const DropDownAnswer = ({
                     <Plus />
                 </div>
             </div>
-            {active && (
-                <div className={styles.answer}>
-                    <Text text={answer} color={TextColors.BG} />
-                </div>
-            )}
+            <div
+                className={classNames(styles.answer, {
+                    [styles.active]: active,
+                    [styles.inActive]: !active,
+                })}
+            >
+                <Text text={answer} color={TextColors.BG} bold />
+            </div>
         </div>
     );
 };
+
+export const DropDownAnswer = memo(DropDownAnswerComponent);

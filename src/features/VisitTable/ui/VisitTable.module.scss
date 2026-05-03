@@ -1,7 +1,6 @@
 .visitTable {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .card {
@@ -16,4 +15,8 @@
         width: 100%;
         height: 100%;
     }
+}
+
+.card2 {
+    flex: 1;
 }

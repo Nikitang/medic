@@ -57,13 +57,13 @@ export const Reviews = ({ className }: ReviewsProps) => {
 
     const scrollLeft = () => {
         if (containerRef.current) {
-            containerRef.current.scrollBy({ left: -190, behavior: 'smooth' });
+            containerRef.current.scrollBy({ left: -170, behavior: 'smooth' });
         }
     };
 
     const scrollRight = () => {
         if (containerRef.current) {
-            containerRef.current.scrollBy({ left: 190, behavior: 'smooth' });
+            containerRef.current.scrollBy({ left: 170, behavior: 'smooth' });
         }
     };
 

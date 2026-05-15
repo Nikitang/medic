@@ -11,6 +11,10 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media (width <= 950px) {
+        flex-direction: column;
+    }
 }
 
 .icon {
@@ -26,5 +30,31 @@
 .iconRight {
     .service {
         flex-direction: row-reverse;
+
+        @media (width <= 950px) {
+            flex-direction: column;
+        }
+    }
+}
+
+.title {
+    @media (width <= 950px) {
+        text-align: center !important;
+        white-space: normal;
+    }
+
+    @media (width <= 575px) {
+        font-size: var(--font-size-s);
+    }
+}
+
+.text {
+    @media (width <= 950px) {
+        text-align: center !important;
+        overflow-wrap: break-word;
+    }
+
+    @media (width <= 575px) {
+        font-size: var(--font-size-s);
     }
 }

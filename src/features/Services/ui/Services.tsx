@@ -22,8 +22,6 @@ export const Services = ({ className }: ServicesProps) => {
         dispatch(fetchServicesData());
     }, [dispatch]);
 
-    console.log(services);
-
     return (
         <div className={classNames(styles.services, {}, [className])}>
             {services?.map((item) => (
@@ -44,11 +42,13 @@ export const Services = ({ className }: ServicesProps) => {
                             <Text
                                 align={textPositionMap[item.iconPosition]}
                                 title={item.title}
+                                className={styles.title}
                             />
                             <Text
                                 color={TextColors.SECONDARY}
                                 align={textPositionMap[item.iconPosition]}
                                 text={item.description}
+                                className={styles.text}
                             />
                         </div>
                     </div>

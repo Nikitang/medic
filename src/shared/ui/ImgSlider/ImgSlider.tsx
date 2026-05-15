@@ -59,7 +59,6 @@ export const ImgSlider = ({ className }: ImgSliderProps) => {
                             [styles.active]: index === currentIndex,
                         })}
                         onClick={() => goToSlide(index)}
-                        aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
             </div>

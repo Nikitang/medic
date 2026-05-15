@@ -10,6 +10,14 @@
     ::-webkit-scrollbar {
         display: none;
     }
+
+    @media (width <= 1080px) {
+        width: 400px;
+    }
+
+    @media (width <= 600px) {
+        width: 180px;
+    }
 }
 
 .reviewsWrapper {

@@ -22,7 +22,6 @@ export const NavbarComponent = ({ className }: NavbarProps) => {
         };
 
         handleResize();
-        console.log(mobile);
 
         window.addEventListener('resize', handleResize);
 
@@ -48,7 +47,7 @@ export const NavbarComponent = ({ className }: NavbarProps) => {
                 <AppLink to={'/services'} bold underline>
                     Мед. услуги
                 </AppLink>
-                <AppLink to={'/login'} bold underline>
+                <AppLink to={'/auth'} bold underline>
                     Войти
                 </AppLink>
             </div>

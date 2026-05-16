@@ -1,0 +1,19 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--font-size-xl);
+}
+
+.submit {
+    margin: 40px auto;
+    border: 1px solid var(--bg-color);
+    border-radius: 5px;
+    color: var(--bg-color);
+    padding-left: 80px;
+    padding-right: 80px;
+}

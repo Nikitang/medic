@@ -4,11 +4,13 @@ import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import ServicesPage from 'pages/ServicesPage/ui/ServicesPage';
+import { AuthPage } from 'pages/AuthPage';
 console.log('MainPage:', MainPage);
 export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
     SERVICES = 'services',
+    AUTH = 'auth',
     //last
     NOT_FOUND = 'not_found',
 }
@@ -17,6 +19,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.SERVICES]: '/services',
+    [AppRoutes.AUTH]: '/auth',
     [AppRoutes.NOT_FOUND]: '*',
 };
 
@@ -34,6 +37,11 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.SERVICES]: {
         path: RoutePath.services,
         element: <ServicesPage />,
+    },
+
+    [AppRoutes.AUTH]: {
+        path: RoutePath.auth,
+        element: <AuthPage />,
     },
 
     //last

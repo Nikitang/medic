@@ -1,8 +1,6 @@
 import { VisitTable } from 'features/VisitTable';
 
 const MainPage = () => {
-    console.log(2222);
-
     return (
         <>
             <VisitTable />

@@ -28,7 +28,6 @@ export const InputComponent = ({
     value,
     onChange,
     type = 'text',
-    placeholder,
     autoFocus,
     readonly,
     ...otherProps
@@ -62,10 +61,6 @@ export const InputComponent = ({
 
     return (
         <div className={classNames(styles.inputWrapper, mods, [className])}>
-            {placeholder && (
-                <div className={styles.placeholder}>{`${placeholder}>`}</div>
-            )}
-
             <div className={styles.caretWrapper}>
                 <input
                     className={styles.input}

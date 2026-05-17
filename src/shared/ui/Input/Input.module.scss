@@ -2,10 +2,6 @@
     display: flex;
 }
 
-.placeholder {
-    margin-right: 5px;
-}
-
 .input {
     padding: 12px;
     border-radius: 5px;
@@ -14,6 +10,10 @@
     font-size: var(--font-m);
     text-shadow: 0 0 0 var(--primary-color);
     caret-color: black;
+
+    &::placeholder {
+        color: #e9d1ff;
+    }
 }
 
 .readonly {

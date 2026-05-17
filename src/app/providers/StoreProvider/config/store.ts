@@ -3,10 +3,17 @@ import { StateSchema } from './StateSchema';
 import { servicesReducer } from 'features/Services/model/slice/servicesSlice';
 import { $api } from 'shared/api/api';
 import { faqReducer } from 'entities/Faq/model/slice/faqSlice';
+import { loginReducer } from 'features/Login';
+import { registrationReducer } from 'features/Registration';
 
 export const createReduxStore = (initialState?: StateSchema) => {
     return configureStore({
-        reducer: { services: servicesReducer, faq: faqReducer },
+        reducer: {
+            services: servicesReducer,
+            faq: faqReducer,
+            login: loginReducer,
+            registration: registrationReducer,
+        },
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) =>

@@ -4,7 +4,7 @@
     scroll-behavior: smooth;
     padding: 10px 0;
     gap: 20px;
-    width: 910px;
+    width: 1000px;
     scrollbar-width: none;
 
     ::-webkit-scrollbar {
@@ -12,11 +12,11 @@
     }
 
     @media (width <= 1080px) {
-        width: 400px;
+        width: 500px;
     }
 
-    @media (width <= 600px) {
-        width: 180px;
+    @media (width <= 630px) {
+        width: 246px;
     }
 }
 
@@ -46,4 +46,9 @@
     &:hover {
         opacity: 0.5;
     }
+}
+
+.title {
+    font-size: var(--font-size-xl);
+    color: var(--bg-color);
 }

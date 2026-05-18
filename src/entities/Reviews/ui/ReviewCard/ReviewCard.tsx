@@ -1,6 +1,6 @@
 import { Card, CardBgOptions } from 'shared/ui/Card';
 import styles from './ReviewCard.module.scss';
-import { Text, TextColors } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextColors } from 'shared/ui/Text/Text';
 
 interface ReviewCardProps {
     icon?: string;
@@ -16,13 +16,17 @@ export const ReviewCard = ({
     return (
         <Card background={CardBgOptions.PRIMARY} border>
             <div className={styles.icon}>
-                <img src={icon} alt="" />
+                <img src={icon} alt="Фотография доктора" />
             </div>
             <div className={styles.fullName}>
-                <Text title={fullName} color={TextColors.BG} />
+                <Text
+                    title={fullName}
+                    color={TextColors.BG}
+                    align={TextAlign.CENTER}
+                />
             </div>
             <div className={styles.specialization}>
-                <Text text={specialization} color={TextColors.SECONDARY} />
+                <Text text={specialization} color={TextColors.BG} bold />
             </div>
         </Card>
     );

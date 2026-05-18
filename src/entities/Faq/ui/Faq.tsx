@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { getFaqData } from '../model/selectors/getFaqData';
 import { useEffect } from 'react';
 import { fetchFaqData } from '../model/services/fetchFaqData';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
 
 interface FaqProps {
     className?: string;
@@ -15,13 +16,16 @@ export const Faq = ({ className }: FaqProps) => {
     const disptach = useAppDispatch();
     const faqData = useSelector(getFaqData);
 
-    console.log(faqData);
-
     useEffect(() => {
         disptach(fetchFaqData());
     }, [disptach]);
     return (
         <div className={classNames(styles.faq, {}, [className])}>
+            <Text
+                align={TextAlign.CENTER}
+                className={styles.title}
+                title={'Популярные вопросы'}
+            />
             {faqData?.map((item) => (
                 <DropDownAnswer
                     key={item.id}

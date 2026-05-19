@@ -11,6 +11,7 @@ export enum TextAlign {
 export enum TextColors {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
+    ERROR = 'error',
     BG = 'bg',
     CUSTOM1 = '',
 }

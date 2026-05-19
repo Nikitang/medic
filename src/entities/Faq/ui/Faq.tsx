@@ -13,12 +13,15 @@ interface FaqProps {
 }
 
 export const Faq = ({ className }: FaqProps) => {
-    const disptach = useAppDispatch();
+    const dispatch = useAppDispatch();
     const faqData = useSelector(getFaqData);
 
     useEffect(() => {
-        disptach(fetchFaqData());
-    }, [disptach]);
+        if (!faqData) {
+            dispatch(fetchFaqData());
+        }
+    }, [dispatch, faqData]);
+
     return (
         <div className={classNames(styles.faq, {}, [className])}>
             <Text

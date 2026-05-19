@@ -17,8 +17,8 @@ const ConsultationComponent = ({ className }: ConsultationProps) => {
             <div className={styles.formTitle}>
                 <Text
                     title={`Если вы нуждаетесь в консультации, 
-            то просто оставьте выши контакты 
-            и мы свами свяжемся`}
+            то просто оставьте ваши контакты 
+            и мы с вами свяжемся`}
                     align={TextAlign.CENTER}
                     bold
                 />

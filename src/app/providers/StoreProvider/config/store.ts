@@ -6,6 +6,7 @@ import { faqReducer } from 'entities/Faq/model/slice/faqSlice';
 import { loginReducer } from 'features/Login';
 import { registrationReducer } from 'features/Registration';
 import { reviewsReducer } from 'entities/Reviews/model/slice/reviewsSlice';
+import { userReducer } from 'entities/User/model/slice/userSlice';
 
 export const createReduxStore = (initialState?: StateSchema) => {
     return configureStore({
@@ -15,6 +16,7 @@ export const createReduxStore = (initialState?: StateSchema) => {
             login: loginReducer,
             registration: registrationReducer,
             reviews: reviewsReducer,
+            user: userReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

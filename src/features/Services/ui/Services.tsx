@@ -19,8 +19,10 @@ export const Services = ({ className }: ServicesProps) => {
     const services = useSelector(getDataServices);
 
     useEffect(() => {
-        dispatch(fetchServicesData());
-    }, [dispatch]);
+        if (!services) {
+            dispatch(fetchServicesData());
+        }
+    }, [dispatch, services]);
 
     return (
         <div className={classNames(styles.services, {}, [className])}>

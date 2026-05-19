@@ -9,6 +9,9 @@ import { loginActions } from '../model/slice/loginSlice';
 import { useSelector } from 'react-redux';
 import { getLoginEmail } from '../model/selectors/getLoginEmail/getLoginEmail';
 import { getLoginPassword } from '../model/selectors/getLoginPassword/getLoginPassword';
+import { sendLoginData } from '../model/services/sendLoginData/sendLoginData';
+import { getLoginEmailError } from '../model/selectors/getLoginEmailError/getLoginEmailError';
+import { getLoginPasswordError } from '../model/selectors/getLoginPasswordError/getLoginPasswordError';
 
 interface LoginProps {
     className?: string;
@@ -19,6 +22,9 @@ const LoginComponent = ({ className }: LoginProps) => {
 
     const email = useSelector(getLoginEmail);
     const password = useSelector(getLoginPassword);
+
+    const emailError = useSelector(getLoginEmailError);
+    const passwordError = useSelector(getLoginPasswordError);
 
     const onChangeEmail = useCallback(
         (value: string) => {
@@ -34,6 +40,27 @@ const LoginComponent = ({ className }: LoginProps) => {
         [dispatch],
     );
 
+    const onClickLogin = useCallback(async () => {
+        const emailErr =
+            !email || !/^\S+@\S+\.\S+$/.test(email)
+                ? 'Некорректный email'
+                : undefined;
+
+        const passwordErr =
+            !password || password.length < 8 ? 'Минимум 8 символов' : undefined;
+
+        dispatch(
+            loginActions.setLoginErrors({
+                emailError: emailErr,
+                passwordError: passwordErr,
+            }),
+        );
+
+        if (!emailErr && !passwordErr) {
+            await dispatch(sendLoginData({ email, password }));
+        }
+    }, [dispatch, email, password]);
+
     return (
         <div className={classNames(styles.login, {}, [className])}>
             <Text
@@ -42,23 +69,38 @@ const LoginComponent = ({ className }: LoginProps) => {
                 color={TextColors.BG}
             />
             <div className={styles.username}>
-                <Text text={'Почта'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Почта'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={email}
                     onChange={onChangeEmail}
                     placeholder={'Введите почту'}
+                    errorText={emailError}
                 />
             </div>
             <div className={styles.password}>
-                <Text text={'Пароль'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Пароль'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={password}
                     onChange={onChangePassword}
                     placeholder={'Введите пароль'}
                     type="password"
+                    errorText={passwordError}
                 />
             </div>
-            <Button className={styles.submitLogin} theme={ButtonTheme.CLEAR}>
+
+            <Button
+                onClick={onClickLogin}
+                className={styles.submitLogin}
+                theme={ButtonTheme.CLEAR}
+            >
                 Войти
             </Button>
         </div>

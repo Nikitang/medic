@@ -9,6 +9,7 @@ import {
 } from 'react';
 import styles from './Input.module.scss';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Text, TextColors } from '../Text/Text';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -21,6 +22,7 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
     autoFocus?: boolean;
     readonly?: boolean;
+    errorText?: string;
 }
 
 export const InputComponent = ({
@@ -30,6 +32,7 @@ export const InputComponent = ({
     type = 'text',
     autoFocus,
     readonly,
+    errorText,
     ...otherProps
 }: InputProps) => {
     const [isFocused, setIsFocused] = useState(false);
@@ -61,20 +64,25 @@ export const InputComponent = ({
 
     return (
         <div className={classNames(styles.inputWrapper, mods, [className])}>
-            <div className={styles.caretWrapper}>
-                <input
-                    className={styles.input}
-                    ref={ref}
-                    type={type}
-                    value={value}
-                    onChange={onChangeHandler}
-                    onBlur={onBlur}
-                    onFocus={onFocus}
-                    onSelect={onSelect}
-                    readOnly={readonly}
-                    {...otherProps}
+            <input
+                className={styles.input}
+                ref={ref}
+                type={type}
+                value={value}
+                onChange={onChangeHandler}
+                onBlur={onBlur}
+                onFocus={onFocus}
+                onSelect={onSelect}
+                readOnly={readonly}
+                {...otherProps}
+            />
+            {errorText && (
+                <Text
+                    className={styles.errorText}
+                    text={errorText}
+                    color={TextColors.ERROR}
                 />
-            </div>
+            )}
         </div>
     );
 };

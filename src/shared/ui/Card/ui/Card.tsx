@@ -30,6 +30,7 @@ interface CardProps {
     height?: CardHeightOptions;
     background?: CardBgOptions;
     border?: boolean;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const Card = ({
@@ -39,6 +40,7 @@ export const Card = ({
     height = CardHeightOptions.D,
     background = CardBgOptions.BG,
     border,
+    onClick,
 }: CardProps) => {
     const mods: Mods = {
         [styles[width]]: width,
@@ -48,7 +50,10 @@ export const Card = ({
     };
 
     return (
-        <div className={classNames(styles.card, mods, [className])}>
+        <div
+            className={classNames(styles.card, mods, [className])}
+            onClick={onClick}
+        >
             {children}
         </div>
     );

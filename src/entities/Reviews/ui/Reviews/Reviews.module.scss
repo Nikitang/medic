@@ -4,7 +4,7 @@
     scroll-behavior: smooth;
     padding: 10px 0;
     gap: 20px;
-    width: 1000px;
+    width: 990px;
     scrollbar-width: none;
 
     ::-webkit-scrollbar {
@@ -12,11 +12,11 @@
     }
 
     @media (width <= 1080px) {
-        width: 500px;
+        width: 490px;
     }
 
     @media (width <= 630px) {
-        width: 246px;
+        width: 235px;
     }
 }
 

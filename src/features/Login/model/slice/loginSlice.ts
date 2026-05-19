@@ -1,11 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { LoginSchema } from '../types/loginSchema';
+import { LoginErrors, LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
     email: '',
     password: '',
     isLoading: false,
+    //errors
+    errors: {
+        emailError: '',
+        passwordError: '',
+    },
 };
 
 export const loginSlice = createSlice({
@@ -17,6 +22,10 @@ export const loginSlice = createSlice({
         },
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
+        },
+
+        setLoginErrors: (state, action: PayloadAction<LoginErrors>) => {
+            state.errors = { ...state.errors, ...action.payload };
         },
     },
     extraReducers: (builder) => {},

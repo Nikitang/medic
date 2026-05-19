@@ -1,28 +1,35 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { LoginSchema } from '../../types/loginSchema';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
+import { User, userActions } from 'entities/User';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
-interface LoginByUsernameProps {
+interface sendLoginDataProps {
     email: string;
     password: string;
 }
 
-export const loginByUsername = createAsyncThunk<
-    LoginSchema,
-    LoginByUsernameProps,
+export const sendLoginData = createAsyncThunk<
+    User,
+    sendLoginDataProps,
     ThunkConfig
 >(
-    'login/loginByUsername',
+    'login/sendLoginData',
     async ({ email, password }, { extra, rejectWithValue, dispatch }) => {
         const { api } = extra;
         try {
-            const response = await api.post<LoginSchema>('/login', {
+            const response = await api.post<User>('/login', {
                 email,
                 password,
             });
 
             if (!response.data) throw new Error();
 
+            localStorage.setItem(
+                USER_LOCALSTORAGE_KEY,
+                JSON.stringify(response.data),
+            );
+
+            dispatch(userActions.setAuthData(response.data));
             return response.data;
         } catch (error) {
             console.error(error);

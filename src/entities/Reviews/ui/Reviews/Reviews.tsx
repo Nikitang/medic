@@ -21,8 +21,10 @@ export const Reviews = ({ className }: ReviewsProps) => {
     console.log(doctors);
 
     useEffect(() => {
-        dispatch(fetchReviewsData());
-    }, [dispatch]);
+        if (!doctors) {
+            dispatch(fetchReviewsData());
+        }
+    }, [dispatch, doctors]);
 
     const containerRef = useRef<HTMLDivElement>(null);
 

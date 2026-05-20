@@ -12,6 +12,7 @@ import { getLoginPassword } from '../model/selectors/getLoginPassword/getLoginPa
 import { sendLoginData } from '../model/services/sendLoginData/sendLoginData';
 import { getLoginEmailError } from '../model/selectors/getLoginEmailError/getLoginEmailError';
 import { getLoginPasswordError } from '../model/selectors/getLoginPasswordError/getLoginPasswordError';
+import { validateLoginData } from '../model/services/validateLoginData/validateLoginData';
 
 interface LoginProps {
     className?: string;
@@ -41,23 +42,14 @@ const LoginComponent = ({ className }: LoginProps) => {
     );
 
     const onClickLogin = useCallback(async () => {
-        const emailErr =
-            !email || !/^\S+@\S+\.\S+$/.test(email)
-                ? 'Некорректный email'
-                : undefined;
+        const fields = { email, password };
+        const errors = validateLoginData(fields);
 
-        const passwordErr =
-            !password || password.length < 8 ? 'Минимум 8 символов' : undefined;
+        dispatch(loginActions.setLoginErrors(errors));
 
-        dispatch(
-            loginActions.setLoginErrors({
-                emailError: emailErr,
-                passwordError: passwordErr,
-            }),
-        );
-
-        if (!emailErr && !passwordErr) {
-            await dispatch(sendLoginData({ email, password }));
+        const hasErrors = Object.values(errors).some(Boolean);
+        if (!hasErrors) {
+            await dispatch(sendLoginData(fields));
         }
     }, [dispatch, email, password]);
 

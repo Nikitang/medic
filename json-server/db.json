@@ -138,5 +138,14 @@
         }
     ],
 
-    "users": [{ "id": "1", "email": "nick@mail.ru", "password": "11111" }]
+    "users": [
+        {
+            "id": "1",
+            "name": "Никита",
+            "surname": "Иванов",
+            "lastname": "Никитич",
+            "email": "nick@mail.ru",
+            "password": "11111"
+        }
+    ]
 }

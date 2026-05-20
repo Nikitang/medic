@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RegistrationSchema } from '../types/registrationSchema';
+import {
+    RegistrationErrors,
+    RegistrationSchema,
+} from '../types/registrationSchema';
 
 const initialState: RegistrationSchema = {
     name: '',
@@ -8,6 +11,13 @@ const initialState: RegistrationSchema = {
     email: '',
     password: '',
     isLoading: false,
+    errors: {
+        nameError: '',
+        surnameError: '',
+        lastnameError: '',
+        emailError: '',
+        passwordError: '',
+    },
 };
 
 export const registrationSlice = createSlice({
@@ -28,6 +38,13 @@ export const registrationSlice = createSlice({
         },
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
+        },
+
+        setRegistrationErrors: (
+            state,
+            action: PayloadAction<RegistrationErrors>,
+        ) => {
+            state.errors = { ...state.errors, ...action.payload };
         },
     },
     extraReducers: (builder) => {},

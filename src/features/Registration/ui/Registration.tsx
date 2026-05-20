@@ -13,6 +13,9 @@ import { getRegistrationPassword } from '../model/selectors/getRegistrationPassw
 import { memo, useCallback } from 'react';
 import { registrationActions } from '../model/slice/registrationSlice';
 import { firstLetterUp } from 'shared/utils/firstLetterUp';
+import { getRegistrationErrors } from '../model/selectors/getRegistrationErrors/getRegistrationErrors';
+import { sendRegistrationData } from '../model/services/sendRegistrationData/sendRegistrationData';
+import { validateRegistrationData } from '../model/services/validateRegistrationData/validateRegistrationData';
 
 interface RegistrationProps {
     className?: string;
@@ -26,6 +29,8 @@ const RegistrationComponent = ({ className }: RegistrationProps) => {
     const lastname = useSelector(getRegistrationLastname);
     const email = useSelector(getRegistrationEmail);
     const password = useSelector(getRegistrationPassword);
+
+    const errors = useSelector(getRegistrationErrors);
 
     const onChangeName = useCallback(
         (value: string) => {
@@ -62,6 +67,18 @@ const RegistrationComponent = ({ className }: RegistrationProps) => {
         [dispatch],
     );
 
+    const onClickRegistration = useCallback(async () => {
+        const fields = { name, surname, lastname, email, password };
+        const errors = validateRegistrationData(fields);
+
+        dispatch(registrationActions.setRegistrationErrors(errors));
+
+        const hasErrors = Object.values(errors).some(Boolean);
+        if (!hasErrors) {
+            await dispatch(sendRegistrationData(fields));
+        }
+    }, [dispatch, name, surname, lastname, email, password]);
+
     return (
         <div className={classNames(styles.registration, {}, [className])}>
             <Text
@@ -70,46 +87,76 @@ const RegistrationComponent = ({ className }: RegistrationProps) => {
                 color={TextColors.BG}
             />
             <div className={styles.name}>
-                <Text text={'Имя'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Имя'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={name}
                     onChange={onChangeName}
                     placeholder={'Введите имя'}
+                    errorText={errors?.nameError}
                 />
             </div>
             <div className={styles.surname}>
-                <Text text={'Фамилия'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Фамилия'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={surname}
                     onChange={onChangeSurname}
                     placeholder={'Введите фамилию'}
+                    errorText={errors?.surnameError}
                 />
             </div>
             <div className={styles.lastname}>
-                <Text text={'Отчество'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Отчество'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={lastname}
                     onChange={onChangeLastname}
                     placeholder={'Введите отчество'}
+                    errorText={errors?.lastnameError}
                 />
             </div>
             <div className={styles.username}>
-                <Text text={'Почта'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Почта'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={email}
                     onChange={onChangeEmail}
                     placeholder={'Введите почту'}
+                    errorText={errors?.emailError}
                 />
             </div>
             <div className={styles.password}>
-                <Text text={'Пароль'} color={TextColors.BG} />
+                <Text
+                    className={styles.formText}
+                    text={'Пароль'}
+                    color={TextColors.BG}
+                />
                 <Input
                     value={password}
                     onChange={onChangePassword}
                     placeholder={'Введите пароль'}
+                    errorText={errors?.passwordError}
+                    type="password"
                 />
             </div>
-            <Button className={styles.submit} theme={ButtonTheme.CLEAR}>
+            <Button
+                onClick={onClickRegistration}
+                className={styles.submit}
+                theme={ButtonTheme.CLEAR}
+            >
                 Войти
             </Button>
         </div>

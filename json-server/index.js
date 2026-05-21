@@ -5,21 +5,25 @@ const jsonServer = require('json-server');
 const path = require('path');
 
 const server = jsonServer.create();
-
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
-server.use(jsonServer.defaults({}));
+server.use(jsonServer.defaults());
 server.use(jsonServer.bodyParser);
 
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
-server.use(async (req, res, next) => {
-    await new Promise((res) => {
-        setTimeout(res, 800);
-    });
-    next();
-});
+const authMiddleware = (req, res, next) => {
+    // Пропускаем публичные эндпоинты
+    if (req.path === '/login' || req.path === '/registration') {
+        return next();
+    }
 
-// Эндпоинт для логина
+    if (!req.headers.authorization) {
+        return res.status(403).json({ message: 'AUTH ERROR' });
+    }
+    next();
+};
+
+server.use(authMiddleware);
+
 server.post('/login', (req, res) => {
     try {
         const { email, password } = req.body;
@@ -43,7 +47,6 @@ server.post('/login', (req, res) => {
     }
 });
 
-// Эндпоинт для регистрации
 server.post('/registration', (req, res) => {
     try {
         const { name, surname, lastname, email, password } = req.body;
@@ -56,7 +59,6 @@ server.post('/registration', (req, res) => {
         const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
         const users = db.users || [];
 
-        // Проверка на уникальность email
         const existingUser = users.find((user) => user.email === email);
         if (existingUser) {
             return res
@@ -89,19 +91,8 @@ server.post('/registration', (req, res) => {
     }
 });
 
-// проверяем, авторизован ли пользователь
-
-server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
-    }
-
-    next();
-});
-
 server.use(router);
 
-// запуск сервера
 server.listen(8000, () => {
     console.log('server is running on 8000 port');
 });

@@ -21,7 +21,7 @@ export const sendRegistrationData = createAsyncThunk<
         { name, surname, lastname, email, password },
         { extra, rejectWithValue, dispatch },
     ) => {
-        const { api } = extra;
+        const { api, navigate } = extra;
         try {
             const response = await api.post<User>('/registration', {
                 name,
@@ -37,6 +37,8 @@ export const sendRegistrationData = createAsyncThunk<
                 USER_LOCALSTORAGE_KEY,
                 JSON.stringify(response.data),
             );
+
+            navigate?.('/');
 
             dispatch(userActions.setAuthData(response.data));
             return response.data;

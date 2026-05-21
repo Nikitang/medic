@@ -7,8 +7,13 @@ import { loginReducer } from 'features/Login';
 import { registrationReducer } from 'features/Registration';
 import { reviewsReducer } from 'entities/Reviews/model/slice/reviewsSlice';
 import { userReducer } from 'entities/User/model/slice/userSlice';
+import { NavigateOptions, To } from 'react-router-dom';
 
-export const createReduxStore = (initialState?: StateSchema) => {
+export const createReduxStore = (
+    navigate?: (to: To, options?: NavigateOptions) => void,
+
+    initialState?: StateSchema,
+) => {
     return configureStore({
         reducer: {
             services: servicesReducer,
@@ -25,6 +30,7 @@ export const createReduxStore = (initialState?: StateSchema) => {
                 thunk: {
                     extraArgument: {
                         api: $api,
+                        navigate,
                     },
                 },
             }),

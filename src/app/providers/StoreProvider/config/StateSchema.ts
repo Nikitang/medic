@@ -5,6 +5,7 @@ import { UserSchema } from 'entities/User/model/types/userSchema';
 import { LoginSchema } from 'features/Login';
 import { RegistrationSchema } from 'features/Registration';
 import { ServiceSchema } from 'features/Services';
+import { NavigateOptions, To } from 'react-router-dom';
 
 export interface StateSchema {
     services: ServiceSchema;
@@ -17,6 +18,7 @@ export interface StateSchema {
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
+    navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 export interface ThunkConfig {

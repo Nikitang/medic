@@ -4,6 +4,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import AppLink from 'shared/ui/AppLink/AppLink';
 import Pharmacy from 'shared/assets/icons/pharmacy.svg';
 import { Text } from 'shared/ui/Text/Text';
+import { useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entities/User';
+import { DropDownMenu } from 'shared/ui/DropDownMenu/DropDownMenu';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface NavbarProps {
     className?: string;
@@ -11,6 +15,8 @@ interface NavbarProps {
 
 export const NavbarComponent = ({ className }: NavbarProps) => {
     const [mobile, setMobile] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+    const authData = useSelector(getUserAuthData);
 
     useEffect(() => {
         const handleResize = () => {
@@ -30,6 +36,10 @@ export const NavbarComponent = ({ className }: NavbarProps) => {
         };
     }, []);
 
+    const onLogout = () => {
+        dispatch(userActions.logout());
+    };
+
     return (
         <div className={classNames(styles.navbar, {}, [className])}>
             <AppLink to={'/'}>
@@ -47,9 +57,13 @@ export const NavbarComponent = ({ className }: NavbarProps) => {
                 <AppLink to={'/services'} bold underline>
                     Мед. услуги
                 </AppLink>
-                <AppLink to={'/auth'} bold underline>
-                    Войти
-                </AppLink>
+                {authData ? (
+                    <DropDownMenu />
+                ) : (
+                    <AppLink to={'/auth'} bold underline>
+                        Войти
+                    </AppLink>
+                )}
             </div>
         </div>
     );

@@ -1,0 +1,13 @@
+/* eslint-disable max-len */
+export const sliderImages = [
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/1b3/j6gv9r29keaynzy7nruq90txq2chmjoe/1200_1200_1/%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BE%D0%BB%D0%B8%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0_%E2%84%966_4.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/788/3hg8cmgdbgldorstd2lj1gme8lssk31r/1200_1200_1/%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BE%D0%BB%D0%B8%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0_%E2%84%966_27.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/a88/5tjskgjdjljkmzgxhleo6rcpvcprau20/1200_1200_1/%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BE%D0%BB%D0%B8%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0_%E2%84%966_13.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/919/nvedoin42jdjgcbxqpqu727t6t3xyjsc/1200_1200_1/%D0%A1%D1%82%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%20%D0%93%D0%9A%D0%91%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%92%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B5%D0%B2%D0%B0_21.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/6b9/3302q8nq6h014hmgooxco3tpvc03xog2/1200_1200_1/%D0%A1%D1%82%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%20%D0%93%D0%9A%D0%91%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%92%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B5%D0%B2%D0%B0_10.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/126/0842hqdc4gadpubr5w3f7thjwj59k6zi/1200_1200_1/21.%20%D0%A4%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%A1%D0%BA%D0%BB%D0%B8%D1%84%D0%BE%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/a8f/k7g60gz0zix3iu1kxcrco8z38vttk1cu/1200_1200_1/19.%20%D0%A4%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%A1%D0%BA%D0%BB%D0%B8%D1%84%D0%BE%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/c44/1sj0l9eipkbf34ohyfgf4dknpbfebc9w/1200_1200_1/28.%20%D0%A4%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%A1%D0%BA%D0%BB%D0%B8%D1%84%D0%BE%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/uf/a12/e3dg9jen5qcxr3h7qjlfrr40wtr7pjov/1200_1200_1/TV_04388.jpg',
+    'https://foto.mos.ru/image-proxy/upload/resize_cache/iblock/3aa/8stlvw5sohaq7qdi8zbdlfr8mkfd6aea/1200_1200_1/TV_04240.jpg',
+];

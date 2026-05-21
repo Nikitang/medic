@@ -15,7 +15,7 @@ export const sendLoginData = createAsyncThunk<
 >(
     'login/sendLoginData',
     async ({ email, password }, { extra, rejectWithValue, dispatch }) => {
-        const { api } = extra;
+        const { api, navigate } = extra;
         try {
             const response = await api.post<User>('/login', {
                 email,
@@ -28,6 +28,8 @@ export const sendLoginData = createAsyncThunk<
                 USER_LOCALSTORAGE_KEY,
                 JSON.stringify(response.data),
             );
+
+            navigate?.('/');
 
             dispatch(userActions.setAuthData(response.data));
             return response.data;

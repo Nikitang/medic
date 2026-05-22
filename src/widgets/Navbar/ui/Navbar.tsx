@@ -15,7 +15,7 @@ interface NavbarProps {
 
 export const NavbarComponent = ({ className }: NavbarProps) => {
     const [mobile, setMobile] = useState<boolean>(false);
-    const dispatch = useAppDispatch();
+
     const authData = useSelector(getUserAuthData);
 
     useEffect(() => {
@@ -35,10 +35,6 @@ export const NavbarComponent = ({ className }: NavbarProps) => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    const onLogout = () => {
-        dispatch(userActions.logout());
-    };
 
     return (
         <div className={classNames(styles.navbar, {}, [className])}>

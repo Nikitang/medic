@@ -1,0 +1,29 @@
+.specialization {
+    p {
+        font-size: var(--font-size-xl);
+    }
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+
+    img {
+        border-radius: 5px;
+        width: 400px;
+
+        @media (width <= 760px) {
+            width: 200px;
+        }
+    }
+}
+
+.fullName {
+    margin: 20px 0;
+}
+
+.appointBtn {
+    margin-top: 30px;
+    background-color: var(--bg-color);
+    border-radius: 5px;
+}

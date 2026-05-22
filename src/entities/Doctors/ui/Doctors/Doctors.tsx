@@ -1,20 +1,20 @@
 import { useEffect, useRef } from 'react';
-import { ReviewCard } from '../ReviewCard/ReviewCard';
-import styles from './Reviews.module.scss';
+import { DoctorCard } from '../DoctorCard/DoctorCard';
+import styles from './Doctors.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import ArrowLeft from 'shared/assets/icons/arrow-left.svg';
 import ArrowRight from 'shared/assets/icons/arrow-right.svg';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchReviewsData } from 'entities/Reviews/model/services/fetchReviewsData';
+import { fetchReviewsData } from 'entities/Doctors/model/services/fetchReviewsData/fetchReviewsData';
 import { useSelector } from 'react-redux';
-import { getReviewsData } from 'entities/Reviews/model/selectors/getReviewsData';
+import { getReviewsData } from 'entities/Doctors/model/selectors/getReviewsData';
 
 interface ReviewsProps {
     className?: string;
 }
 
-export const Reviews = ({ className }: ReviewsProps) => {
+export const Doctors = ({ className }: ReviewsProps) => {
     const dispatch = useAppDispatch();
     const doctors = useSelector(getReviewsData);
 
@@ -68,8 +68,9 @@ export const Reviews = ({ className }: ReviewsProps) => {
                     className={classNames(styles.reviews, {}, [className])}
                 >
                     {doctors?.map((item) => (
-                        <ReviewCard
+                        <DoctorCard
                             key={item.id}
+                            id={item.id}
                             fullName={item.fullName}
                             icon={item.photo}
                             specialization={item.specialization}

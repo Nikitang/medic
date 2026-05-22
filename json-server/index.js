@@ -91,6 +91,76 @@ server.post('/registration', (req, res) => {
     }
 });
 
+server.post('/appoint', (req, res) => {
+    try {
+        const { user: userEmail, doctor, time } = req.body;
+
+        if (!userEmail || !doctor || !time) {
+            return res.status(400).json({ message: 'Не все данные' });
+        }
+
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const users = db.users || [];
+
+        const userIndex = users.findIndex((user) => user.email === userEmail);
+        if (userIndex === -1) {
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        }
+
+        const userAppointments = users[userIndex].appointments || [];
+        const newAppointmentId =
+            userAppointments.length > 0
+                ? Math.max(...userAppointments.map((a) => +a.id)) + 1
+                : 1;
+
+        const newAppointment = {
+            id: String(newAppointmentId),
+            doctor,
+            time,
+        };
+
+        users[userIndex].appointments = [...userAppointments, newAppointment];
+        db.users = users;
+
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
+
+        return res.status(201).json({
+            message: 'Запись успешно создана',
+            appointment: newAppointment,
+        });
+    } catch (e) {
+        console.error('Appointment error:', e);
+        return res.status(500).json({ message: 'Ошибка при создании записи' });
+    }
+});
+
+server.post('/appointments', (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ message: 'Email обязателен' });
+        }
+
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const users = db.users || [];
+
+        const user = users.find((user) => user.email === email);
+        if (!user) {
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        }
+
+        return res.json(user.appointments || []);
+    } catch (e) {
+        console.error('Fetch appointments error:', e);
+        return res
+            .status(500)
+            .json({ message: 'Ошибка при получении записей' });
+    }
+});
+
 server.use(router);
 
 server.listen(8000, () => {

@@ -1,0 +1,17 @@
+.timePicker {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.timeBtn {
+    color: var(--bg-color);
+    border: 1px solid var(--bg-color);
+    border-radius: 5px;
+}
+
+.active {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}

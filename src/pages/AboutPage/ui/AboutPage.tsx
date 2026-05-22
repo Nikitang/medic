@@ -1,12 +1,12 @@
 import { Faq } from 'entities/Faq/ui/Faq';
-import { Reviews } from 'entities/Reviews';
+import { Doctors } from 'entities/Doctors';
 import { About } from 'features/About';
 
 const AboutPage = () => {
     return (
         <div>
             <About />
-            <Reviews />
+            <Doctors />
             <Faq />
         </div>
     );

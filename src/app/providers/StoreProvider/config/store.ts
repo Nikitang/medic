@@ -5,9 +5,10 @@ import { $api } from 'shared/api/api';
 import { faqReducer } from 'entities/Faq/model/slice/faqSlice';
 import { loginReducer } from 'features/Login';
 import { registrationReducer } from 'features/Registration';
-import { reviewsReducer } from 'entities/Reviews/model/slice/reviewsSlice';
+import { reviewsReducer } from 'entities/Doctors/model/slice/reviewsSlice';
 import { userReducer } from 'entities/User/model/slice/userSlice';
 import { NavigateOptions, To } from 'react-router-dom';
+import { appointmentsReducer } from 'features/Appointments/model/slice/appointmentsSlice';
 
 export const createReduxStore = (
     navigate?: (to: To, options?: NavigateOptions) => void,
@@ -22,6 +23,7 @@ export const createReduxStore = (
             registration: registrationReducer,
             reviews: reviewsReducer,
             user: userReducer,
+            appointments: appointmentsReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

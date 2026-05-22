@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchReviewsData } from '../services/fetchReviewsData';
-import { Reviews, ReviewsSchema } from '../types/reviewsSchema';
+import { fetchReviewsData } from '../services/fetchReviewsData/fetchReviewsData';
+import { Doctor, DoctorsSchema } from '../types/doctorsSchema';
 
-const initialState: ReviewsSchema = {
+const initialState: DoctorsSchema = {
     data: undefined,
 };
 
@@ -14,7 +14,7 @@ export const reviewsSlice = createSlice({
         builder
             .addCase(
                 fetchReviewsData.fulfilled,
-                (state, action: PayloadAction<Array<Reviews>>) => {
+                (state, action: PayloadAction<Array<Doctor>>) => {
                     state.data = action.payload;
                 },
             )

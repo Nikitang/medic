@@ -1,5 +1,11 @@
+import { Appointments } from 'features/Appointments';
+
 const AppointmentsPage = () => {
-    return <div></div>;
+    return (
+        <div>
+            <Appointments />
+        </div>
+    );
 };
 
 export default AppointmentsPage;

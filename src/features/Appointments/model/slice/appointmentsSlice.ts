@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Appoint, AppointmentsSchema } from '../types/appointmentsSchema';
 import { fetchAppointmentsData } from '../services/fetchAppointmentsData/fetchAppointmentsData';
+import { deleteAppointmentData } from '../services/deleteAppointmentData/deleteAppointmentData';
 
 const initialState: AppointmentsSchema = {
     data: undefined,
@@ -20,6 +21,14 @@ export const appointmentsSlice = createSlice({
             )
             .addCase(fetchAppointmentsData.rejected, (_, action) => {
                 console.error('rejected:', action.payload, action.error);
+            })
+            .addCase(deleteAppointmentData.fulfilled, (state, action) => {
+                const deletedId = action.payload;
+                if (state.data) {
+                    state.data = state.data.filter(
+                        (app) => app.id !== deletedId,
+                    );
+                }
             });
     },
 });

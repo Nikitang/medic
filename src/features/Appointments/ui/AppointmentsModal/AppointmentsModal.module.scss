@@ -1,0 +1,15 @@
+.btns {
+    display: flex;
+    gap: 20px;
+}
+
+.yes {
+    border: 1px solid var(--bg-color);
+    border-radius: 5px;
+    color: var(--bg-color);
+}
+
+.no {
+    border-radius: 5px;
+    background: var(--bg-color);
+}

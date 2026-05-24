@@ -9,6 +9,7 @@ import { reviewsReducer } from 'entities/Doctors/model/slice/reviewsSlice';
 import { userReducer } from 'entities/User/model/slice/userSlice';
 import { NavigateOptions, To } from 'react-router-dom';
 import { appointmentsReducer } from 'features/Appointments/model/slice/appointmentsSlice';
+import { consultationReducer } from 'features/Consultation/model/slice/consultationSlice';
 
 export const createReduxStore = (
     navigate?: (to: To, options?: NavigateOptions) => void,
@@ -24,6 +25,7 @@ export const createReduxStore = (
             reviews: reviewsReducer,
             user: userReducer,
             appointments: appointmentsReducer,
+            consultation: consultationReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

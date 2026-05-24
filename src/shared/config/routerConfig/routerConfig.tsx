@@ -6,7 +6,6 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import ServicesPage from 'pages/ServicesPage/ui/ServicesPage';
 import { AuthPage } from 'pages/AuthPage';
 import { AppointmentsPage } from 'pages/AppointmentsPage';
-console.log('MainPage:', MainPage);
 export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',

@@ -15,7 +15,6 @@ export const servicesSlice = createSlice({
             .addCase(
                 fetchServicesData.fulfilled,
                 (state, action: PayloadAction<Array<Service>>) => {
-                    console.log('action', action.payload);
 
                     state.data = action.payload;
                 },

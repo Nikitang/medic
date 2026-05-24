@@ -18,7 +18,6 @@ export const Doctors = ({ className }: ReviewsProps) => {
     const dispatch = useAppDispatch();
     const doctors = useSelector(getReviewsData);
 
-    console.log(doctors);
 
     useEffect(() => {
         if (!doctors) {

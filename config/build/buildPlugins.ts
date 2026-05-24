@@ -28,7 +28,7 @@ export function buildPlugins({
         plugins.push(
             new webpack.ProgressPlugin(),
             // new BundleAnalyzerPlugin({
-            //     openAnalyzer: false,
+            //     openAnalyzer: true,
             //     analyzerPort: 8889,
             // }),
             new webpack.HotModuleReplacementPlugin(),

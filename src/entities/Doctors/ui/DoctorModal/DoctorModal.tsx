@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { sendAppointData } from 'entities/Doctors/model/services/sendAppointData/sendAppointData';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import AppLink from 'shared/ui/AppLink/AppLink';
 
 interface DoctorModalProps {
     className?: string;
@@ -40,8 +41,6 @@ export const DoctorModal = ({
         time: activeTime,
     };
 
-    console.log('1', data);
-
     const onSetAppoint = () => {
         if (user && user?.email) {
             dispatch(
@@ -60,34 +59,53 @@ export const DoctorModal = ({
             isOpen={openState}
             onClose={onClose}
         >
-            <Card background={CardBgOptions.PRIMARY} border>
-                <div className={styles.specialization}>
-                    <Text text={specialization} color={TextColors.BG} bold />
-                </div>
-                <div className={styles.icon}>
-                    <img src={image} alt="Фотография доктора" />
-                </div>
-                <div className={styles.fullName}>
-                    <Text
-                        title={fullName}
-                        color={TextColors.BG}
-                        align={TextAlign.CENTER}
+            {user && (
+                <Card background={CardBgOptions.PRIMARY} border>
+                    <div className={styles.specialization}>
+                        <Text
+                            text={specialization}
+                            color={TextColors.BG}
+                            bold
+                        />
+                    </div>
+                    <div className={styles.icon}>
+                        <img src={image} alt="Фотография доктора" />
+                    </div>
+                    <div className={styles.fullName}>
+                        <Text
+                            title={fullName}
+                            color={TextColors.BG}
+                            align={TextAlign.CENTER}
+                        />
+                    </div>
+
+                    <TimePicker
+                        activeTime={activeTime}
+                        setActiveTime={setActiveTime}
                     />
-                </div>
 
-                <TimePicker
-                    activeTime={activeTime}
-                    setActiveTime={setActiveTime}
-                />
+                    <Button
+                        onClick={onSetAppoint}
+                        theme={ButtonTheme.CLEAR}
+                        className={styles.appointBtn}
+                    >
+                        Записаться
+                    </Button>
+                </Card>
+            )}
 
-                <Button
-                    onClick={onSetAppoint}
-                    theme={ButtonTheme.CLEAR}
-                    className={styles.appointBtn}
-                >
-                    Записаться
-                </Button>
-            </Card>
+            {!user && (
+                <Card background={CardBgOptions.PRIMARY}>
+                    <Text
+                        color={TextColors.BG}
+                        title={'Для записи к врачу, требуется войти в систему'}
+                        className={styles.loginText}
+                    />
+                    <AppLink className={styles.redirect} to={'/auth'}>
+                        Войти
+                    </AppLink>
+                </Card>
+            )}
         </Modal>
     );
 };

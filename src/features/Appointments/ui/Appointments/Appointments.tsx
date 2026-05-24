@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 import styles from './Appointments.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { getAppointmentsData } from '../model/selctors/getAppointmentsData/getAppointmentsData';
+import { getAppointmentsData } from '../../model/selctors/getAppointmentsData/getAppointmentsData';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useEffect } from 'react';
-import { fetchAppointmentsData } from '../model/services/fetchAppointmentsData/fetchAppointmentsData';
+import { fetchAppointmentsData } from '../../model/services/fetchAppointmentsData/fetchAppointmentsData';
 import { getUserAuthData } from 'entities/User';
-import { Card } from 'shared/ui/Card';
+import { Text, TextAlign, TextColors } from 'shared/ui/Text/Text';
+import { AppointmentsCard } from '../AppointmentsCard/AppointmentsCard';
 
 interface AppointmentsProps {
     className?: string;
@@ -25,11 +26,21 @@ export const Appointments = ({ className }: AppointmentsProps) => {
 
     return (
         <div className={classNames(styles.appointments, {}, [className])}>
-            {appointments?.map((appoint) => (
-                <Card key={appoint.doctor?.id}>
-                    <div>{appoint.doctor?.fullName}</div>
-                </Card>
-            ))}
+            <Text
+                title={'Записи'}
+                color={TextColors.BG}
+                align={TextAlign.CENTER}
+                className={styles.title}
+            />
+            <div className={styles.cards}>
+                {appointments?.map((appoint) => (
+                    <AppointmentsCard
+                        key={appoint.id}
+                        appoint={appoint}
+                        user={user}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

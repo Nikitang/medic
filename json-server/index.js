@@ -12,7 +12,14 @@ server.use(jsonServer.bodyParser);
 
 const authMiddleware = (req, res, next) => {
     // Пропускаем публичные эндпоинты
-    if (req.path === '/login' || req.path === '/registration') {
+    if (
+        req.path === '/login' ||
+        req.path === '/registration' ||
+        req.path === '/services' ||
+        req.path === '/doctors' ||
+        req.path === '/faq' ||
+        req.path === '/consultations'
+    ) {
         return next();
     }
 
@@ -158,6 +165,90 @@ server.post('/appointments', (req, res) => {
         return res
             .status(500)
             .json({ message: 'Ошибка при получении записей' });
+    }
+});
+
+server.delete('/appointments/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const email = req.headers.authorization;
+
+        if (!id || !email) {
+            return res
+                .status(400)
+                .json({ message: 'ID записи и email обязательны' });
+        }
+
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const users = db.users || [];
+
+        const userIndex = users.findIndex((user) => user.email === email);
+        if (userIndex === -1) {
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        }
+
+        const userAppointments = users[userIndex].appointments || [];
+        const appointmentIndex = userAppointments.findIndex(
+            (app) => app.id === id,
+        );
+
+        if (appointmentIndex === -1) {
+            return res.status(404).json({ message: 'Запись не найдена' });
+        }
+
+        users[userIndex].appointments.splice(appointmentIndex, 1);
+        db.users = users;
+
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
+
+        return res.status(200).json({ message: 'Запись успешно удалена' });
+    } catch (e) {
+        console.error('Delete appointment error:', e);
+        return res.status(500).json({ message: 'Ошибка при удалении записи' });
+    }
+});
+
+server.post('/consultations', (req, res) => {
+    try {
+        const { name, surname, lastname, email } = req.body;
+
+        if (!name || !surname || !lastname || !email) {
+            return res.status(400).json({ message: 'Все поля обязательны' });
+        }
+
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+
+        if (!db.consultations) {
+            db.consultations = [];
+        }
+
+        const newId =
+            db.consultations.length > 0
+                ? Math.max(...db.consultations.map((c) => +c.id)) + 1
+                : 1;
+
+        const newConsultation = {
+            id: String(newId),
+            name,
+            surname,
+            lastname,
+            email,
+            createdAt: new Date().toISOString(),
+        };
+
+        db.consultations.push(newConsultation);
+
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
+
+        return res.status(201).json({
+            message: 'Заявка успешно отправлена',
+            consultation: newConsultation,
+        });
+    } catch (e) {
+        console.error('Consultation error:', e);
+        return res.status(500).json({ message: 'Ошибка при отправке заявки' });
     }
 });
 

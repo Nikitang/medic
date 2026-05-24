@@ -7,6 +7,7 @@ import { RegistrationSchema } from 'features/Registration';
 import { ServiceSchema } from 'features/Services';
 import { NavigateOptions, To } from 'react-router-dom';
 import { AppointmentsSchema } from 'features/Appointments';
+import { ConsultationsSchema } from 'features/Consultation';
 
 export interface StateSchema {
     services: ServiceSchema;
@@ -16,6 +17,7 @@ export interface StateSchema {
     reviews: DoctorsSchema;
     user: UserSchema;
     appointments: AppointmentsSchema;
+    consultation: ConsultationsSchema;
 }
 
 export interface ThunkExtraArg {

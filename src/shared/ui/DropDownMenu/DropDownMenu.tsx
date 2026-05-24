@@ -7,6 +7,7 @@ import { Card } from '../Card';
 import { Button, ButtonTheme } from '../Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from 'entities/User';
+import { useNavigate } from 'react-router-dom';
 
 interface DropDownMenuProps {
     children?: ReactNode;
@@ -16,10 +17,12 @@ interface DropDownMenuProps {
 
 export const DropDownMenu = ({ className, children }: DropDownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const onLogout = () => {
         dispatch(userActions.logout());
+        navigate('/');
     };
 
     return (

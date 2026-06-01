@@ -16,6 +16,7 @@ export const ServicesCards = ({ className }: ServicesCardsProps) => {
     const sendToServices = () => {
         navigate('/services');
     };
+
     return (
         <div className={classNames(styles.servicesCards, {}, [className])}>
             <Card

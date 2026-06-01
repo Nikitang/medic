@@ -9,3 +9,6 @@ dev:
 
 server:
 	npm run start:dev:server
+
+unit:
+	npm run unit

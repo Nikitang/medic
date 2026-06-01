@@ -35,8 +35,8 @@ const TextComponent = ({
 }: TextProps) => {
     const mods: Mods = {
         [styles[align]]: true,
-        [styles[color]]: color,
-        [styles.bold]: bold,
+        [styles[color]]: true,
+        [styles.bold]: !!bold,
     };
 
     return (

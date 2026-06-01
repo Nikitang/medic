@@ -5,7 +5,7 @@ import { getDataServices } from '../model/selectors/getDataServices/getDataServi
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchServicesData } from '../model/services/fetchServicesData';
-import { Text, TextAlign, TextColors } from 'shared/ui/Text/Text';
+import { Text, TextColors } from 'shared/ui/Text/Text';
 import { Card } from 'shared/ui/Card';
 import { iconMap } from 'shared/utils/IconMap';
 import { textPositionMap } from 'shared/utils/textPositionMap';

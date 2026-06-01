@@ -41,6 +41,7 @@ const DropDownAnswerComponent = ({
                 </div>
             </div>
             <div
+                data-testid="answer-container"
                 className={classNames(styles.answer, {
                     [styles.active]: active,
                     [styles.inActive]: !active,
